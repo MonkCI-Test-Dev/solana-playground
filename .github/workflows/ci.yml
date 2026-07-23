@@ -6,7 +6,7 @@ on:
 jobs:
   format_client:
     name: Format client
-    runs-on: monkci-ubuntu-24.04-4
+    runs-on: self-hosted
 
     defaults:
       run:
@@ -38,7 +38,7 @@ jobs:
           command -v rustup || true
 
   format_server:
-    runs-on: monkci-ubuntu-24.04-4
+    runs-on: self-hosted
     name: Format server
 
     defaults:
@@ -55,7 +55,7 @@ jobs:
         run: cargo +nightly fmt --check
 
   format_wasm:
-    runs-on: monkci-ubuntu-24.04-4
+    runs-on: self-hosted
     name: Format WASM
 
     defaults:
@@ -69,7 +69,7 @@ jobs:
         run: cargo fmt --check
 
   clippy_server:
-    runs-on: monkci-ubuntu-24.04-4
+    runs-on: self-hosted
     name: Clippy Server
 
     defaults:
@@ -86,7 +86,7 @@ jobs:
         run: cargo clippy --all-targets -- -D warnings
 
   clippy_wasm:
-    runs-on: monkci-ubuntu-24.04-4
+    runs-on: self-hosted
     name: Clippy WASM
 
     defaults:
@@ -104,7 +104,7 @@ jobs:
 
   build:
     name: Build
-    runs-on: monkci-ubuntu-24.04-4
+    runs-on: self-hosted
     needs:
       [format_client, format_server, format_wasm, clippy_server, clippy_wasm]
 
