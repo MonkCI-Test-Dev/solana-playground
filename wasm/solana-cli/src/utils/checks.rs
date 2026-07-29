@@ -96,8 +96,8 @@ pub async fn check_account_for_spend_and_fee_with_commitment(
     {
         if balance > 0 {
             return Err(CliError::InsufficientFundsForSpendAndFee(
-                lamports_to_sol(balance),
                 lamports_to_sol(fee),
+                lamports_to_sol(balance),
                 *account_pubkey,
             ));
         } else {
