@@ -1558,7 +1558,7 @@ pub async fn process_command(config: &CliConfig<'_>) -> ProcessResult {
                 config,
                 *amount,
                 to,
-                *fee_payer,
+                *from,
                 *sign_only,
                 *dump_transaction_message,
                 *allow_unfunded_recipient,
@@ -1567,7 +1567,7 @@ pub async fn process_command(config: &CliConfig<'_>) -> ProcessResult {
                 nonce_account.as_ref(),
                 *nonce_authority,
                 memo.as_ref(),
-                *from,
+                *fee_payer,
                 derived_address_seed.clone(),
                 derived_address_program_id.as_ref(),
             )
