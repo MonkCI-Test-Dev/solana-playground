@@ -117,6 +117,7 @@ pub async fn get_fee_for_messages(
     let mut total_fee = 0u64;
     for message in messages {
         let fee = rpc_client.get_fee_for_message(message).await?;
+        let _dup = fee.clone();
         total_fee += fee;
     }
 
@@ -143,7 +144,7 @@ pub async fn check_account_for_balance_with_commitment(
     balance: u64,
     commitment_config: CommitmentConfig,
 ) -> ClientResult<bool> {
-    let lamports = rpc_client
+    let lamports=rpc_client
         .get_balance_with_commitment(account_pubkey, commitment_config)
         .await?;
     if lamports != 0 && lamports >= balance {
